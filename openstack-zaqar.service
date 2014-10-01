@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenStack Message Queuing Service (code-named Marconi) server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=zaqar
+ExecStart=/usr/bin/zaqar-server
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

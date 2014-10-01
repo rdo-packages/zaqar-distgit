@@ -1,0 +1,36 @@
+--- zaqar-2014.2.dev98.g89aa8d0-orig/zaqar/version.py	2014-09-01 20:36:53.682000000 -0430
++++ zaqar-2014.2.dev98.g89aa8d0/zaqar/version.py	2014-09-01 20:43:39.133000000 -0430
+@@ -13,11 +13,30 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import pbr.packaging
+-import pbr.version
++ZAQAR_VENDOR = "Openstack Foundation"
++ZAQAR_PRODUCT = "Openstack Zaqar"
++ZAQAR_PACKAGE = None # Os distro package version suffix
+ 
++class VersionInfo(object):
++    release = "REDHATRELEASE"
++    version = "REDHATVERSION"
+ 
+-version_info = pbr.version.VersionInfo('zaqar')
++    def version_string(self):
++        return self.version
++
++    def cached_version_string(self):
++        return self.version
++
++    def release_string(self):
++        return self.release
++
++    def canonical_version_string(self):
++        return self.version
++
++    def version_string_with_vcs(self):
++        return self.release
++
++version_info = VersionInfo()
+ 
+ 
+ def verify_sha(expected):
