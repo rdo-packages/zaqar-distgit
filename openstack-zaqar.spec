@@ -1,26 +1,30 @@
 %global project zaqar
 Name:           openstack-%{project}
 Version:        2014.2
-Release:        0.3.b3%{?dist}
+Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
 Group:          Applications/System
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
-Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.b3.tar.gz
+Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.tar.gz
 Source1:        %{project}-dist.conf
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
 
+#
+# patches_base=2014.2
+#
 Patch0001: 0001-Remove-runtime-dependency-on-PBR.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
-BuildRequires:  systemd
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 BuildRequires:  openstack-utils
+BuildRequires:  systemd
+BuildRequires:  git
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -57,8 +61,8 @@ Users will be able to customize Zaqar to achieve a wide range of performance,
 durability, availability,and efficiency goals
 
 %prep
-%setup -q -n %{project}-%{version}.b3
-%patch0001 -p1
+%autosetup -n %{project}-%{version} -S git
+
 sed -i 's/REDHATVERSION/%{version}/; s/REDHATRELEASE/%{release}/' %{project}/version.py
 
 # Remove the requirements file so that pbr hooks don't add it
@@ -128,7 +132,9 @@ exit 0
 %systemd_postun_with_restart openstack-zaqar.service
 
 %files
-%doc LICENSE README.rst
+%{!?_licensedir: %global license %%doc}
+%license LICENSE
+%doc README.rst
 
 %dir %{_sysconfdir}/%{project}
 %config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/%{project}.conf
@@ -153,7 +159,10 @@ exit 0
 %{python_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
-* Sun Sep 10 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.3.b3
+* Sun Oct 19 2014 Haïkel Guémar <hguemar@fedoraproject.org> 2014.2-1
+- Update to upstream 2014.2
+
+* Sun Sep 07 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.3.b3
 - Adding missing requires
 
 * Sun Sep 07 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.2.b3

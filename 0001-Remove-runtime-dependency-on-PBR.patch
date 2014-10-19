@@ -1,20 +1,29 @@
---- zaqar-2014.2.dev98.g89aa8d0-orig/zaqar/version.py	2014-09-01 20:36:53.682000000 -0430
-+++ zaqar-2014.2.dev98.g89aa8d0/zaqar/version.py	2014-09-01 20:43:39.133000000 -0430
-@@ -13,11 +13,30 @@
+From 7a27036f3ba845fed70fc11fbe25c841d8fd1e91 Mon Sep 17 00:00:00 2001
+From: Jon Bernard <jbernard@tuxion.com>
+Date: Tue, 22 Apr 2014 13:16:29 -0400
+Subject: [PATCH] Remove runtime dependency on PBR
+
+---
+ zaqar/version.py | 24 +++++++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/zaqar/version.py b/zaqar/version.py
+index fbcdb67..8038ba1 100644
+--- a/zaqar/version.py
++++ b/zaqar/version.py
+@@ -13,11 +13,29 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
  
 -import pbr.packaging
 -import pbr.version
-+ZAQAR_VENDOR = "Openstack Foundation"
-+ZAQAR_PRODUCT = "Openstack Zaqar"
-+ZAQAR_PACKAGE = None # Os distro package version suffix
  
+ 
+-version_info = pbr.version.VersionInfo('zaqar')
 +class VersionInfo(object):
 +    release = "REDHATRELEASE"
 +    version = "REDHATVERSION"
- 
--version_info = pbr.version.VersionInfo('zaqar')
++
 +    def version_string(self):
 +        return self.version
 +
@@ -29,6 +38,7 @@
 +
 +    def version_string_with_vcs(self):
 +        return self.release
++
 +
 +version_info = VersionInfo()
  
