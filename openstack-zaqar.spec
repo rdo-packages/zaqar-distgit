@@ -1,7 +1,9 @@
 %global project zaqar
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           openstack-%{project}
-Version:        2015.1.0
-Release:        1%{?dist}
+Version:        XXX
+Release:        XXX
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
@@ -58,7 +60,7 @@ Users will be able to customize Zaqar to achieve a wide range of performance,
 durability, availability,and efficiency goals
 
 %prep
-%autosetup -n %{project}-%{version} -S git
+%autosetup -n %{project}-%{upstream_version} -S git
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
@@ -140,7 +142,7 @@ exit 0
 
 %dir %attr(0755, %{project}, root) %{_localstatedir}/log/%{project}
 
-%{_bindir}/marconi-server
+#%{_bindir}/marconi-server
 %{_bindir}/%{project}-server
 %{_bindir}/%{project}-bench
 %{_bindir}/%{project}-gc
@@ -156,19 +158,4 @@ exit 0
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
-* Fri Jun 12 2015 Haikel Guemar <hguemar@fedoraproject.org> 2015.1.0-1
-- Update to upstream 2015.1.0
-- Dropping pbr patch
-- Spec cleanups
 
-* Sun Oct 19 2014 Haïkel Guémar <hguemar@fedoraproject.org> 2014.2-1
-- Update to upstream 2014.2
-
-* Sun Sep 07 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.3.b3
-- Adding missing requires
-
-* Sun Sep 07 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.2.b3
-- Adding obsoletes to the spec.
-
-* Fri Aug 22 2014 Eduardo Echeverria <echevemaster@gmail.com> 2014.2-0.1.b3
-- Initial commit
