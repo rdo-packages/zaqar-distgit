@@ -1,22 +1,18 @@
 %global project zaqar
 Name:           openstack-%{project}
-Version:        2014.2
+Version:        2015.1.0
 Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
-Group:          Applications/System
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.tar.gz
 Source1:        %{project}-dist.conf
+# generated configuration file w/ oslo-config-generator
+Source2:        %{project}.conf.sample
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
-
-#
-# patches_base=2014.2
-#
-Patch0001: 0001-Remove-runtime-dependency-on-PBR.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -52,6 +48,7 @@ Requires:         python-iso8601
 Requires:         python-msgpack
 Requires:         python-webob
 Requires:         python-posix_ipc
+Requires:         python-pbr
 
 %description
 Zaqar is a new OpenStack project to create a multi-tenant cloud queuing 
@@ -63,14 +60,14 @@ durability, availability,and efficiency goals
 %prep
 %autosetup -n %{project}-%{version} -S git
 
-sed -i 's/REDHATVERSION/%{version}/; s/REDHATRELEASE/%{release}/' %{project}/version.py
-
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
 rm -rf {test-,}requirements.txt
 
 %build
 %{__python2} setup.py build
+
+install -p -D -m 640 %{SOURCE2} etc/%{project}.conf.sample
 
 # Programmatically update defaults in sample configs
 
@@ -90,7 +87,7 @@ done < %{SOURCE1}']'
 
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
  
 # Setup directories
@@ -155,10 +152,15 @@ exit 0
 
 %defattr(-,root,root,-)
 %{_unitdir}/%{name}.service
-%{python_sitelib}/%{project}
-%{python_sitelib}/%{project}-%{version}*.egg-info
+%{python2_sitelib}/%{project}
+%{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
+* Fri Jun 12 2015 Haikel Guemar <hguemar@fedoraproject.org> 2015.1.0-1
+- Update to upstream 2015.1.0
+- Dropping pbr patch
+- Spec cleanups
+
 * Sun Oct 19 2014 Haïkel Guémar <hguemar@fedoraproject.org> 2014.2-1
 - Update to upstream 2014.2
 
