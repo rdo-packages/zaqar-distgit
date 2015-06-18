@@ -1,7 +1,7 @@
 %global project zaqar
 Name:           openstack-%{project}
 Version:        2015.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
@@ -156,6 +156,9 @@ exit 0
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.1.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Fri Jun 12 2015 Haikel Guemar <hguemar@fedoraproject.org> 2015.1.0-1
 - Update to upstream 2015.1.0
 - Dropping pbr patch
