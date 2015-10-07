@@ -1,15 +1,23 @@
 %global project zaqar
+%global milestone .0rc2
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           openstack-%{project}
-Version:        2015.1.0
-Release:        2%{?dist}
+Version:        1.0.0
+Release:        0.1%{milestone}%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
-Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.tar.gz
+Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{upstream_version}.tar.gz
 Source1:        %{project}-dist.conf
 # generated configuration file w/ oslo-config-generator
 Source2:        %{project}.conf.sample
+
+#
+# patches_base=1.0.0.0rc2
+#
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
@@ -58,7 +66,7 @@ Users will be able to customize Zaqar to achieve a wide range of performance,
 durability, availability,and efficiency goals
 
 %prep
-%autosetup -n %{project}-%{version} -S git
+%autosetup -n %{project}-%{upstream_version} -S git
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
@@ -140,7 +148,6 @@ exit 0
 
 %dir %attr(0755, %{project}, root) %{_localstatedir}/log/%{project}
 
-%{_bindir}/marconi-server
 %{_bindir}/%{project}-server
 %{_bindir}/%{project}-bench
 %{_bindir}/%{project}-gc
@@ -156,6 +163,10 @@ exit 0
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
+* Wed Oct 07 2015 Haikel Guemar <hguemar@fedoraproject.org> 1.0.0-0.1.0rc2
+- Update to upstream 1.0.0.0rc2
+- Drop compat binary marconi-server
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2015.1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
