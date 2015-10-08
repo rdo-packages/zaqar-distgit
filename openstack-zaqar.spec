@@ -8,7 +8,7 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        1.0.0
-Release:        0.1%{milestone}%{?dist}
+Release:        0.1%{milestone}%{?dist}.1
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
@@ -166,7 +166,7 @@ exit 0
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
-* Wed Oct 07 2015 Haikel Guemar <hguemar@fedoraproject.org> 1.0.0-0.1.0rc2
+* Wed Oct 07 2015 Haikel Guemar <hguemar@fedoraproject.org> 1:1.0.0-0.1.0rc2
 - Update to upstream 1.0.0.0rc2
 - Drop compat binary marconi-server
 
