@@ -1,5 +1,5 @@
 %global project zaqar
-%global milestone .0rc2
+%global milestone
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -8,7 +8,7 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        1.0.0
-Release:        0.1%{milestone}%{?dist}.1
+Release:        1%{milestone}%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
@@ -17,10 +17,6 @@ Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{upstream_versio
 Source1:        %{project}-dist.conf
 # generated configuration file w/ oslo-config-generator
 Source2:        %{project}.conf.sample
-
-#
-# patches_base=1.0.0.0rc2
-#
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
@@ -166,6 +162,9 @@ exit 0
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
 %changelog
+* Fri Oct 16 2015 Haikel Guemar <hguemar@fedoraproject.org> 1:1.0.0-1
+- Update to upstream 1.0.0
+
 * Wed Oct 07 2015 Haikel Guemar <hguemar@fedoraproject.org> 1:1.0.0-0.1.0rc2
 - Update to upstream 1.0.0.0rc2
 - Drop compat binary marconi-server
