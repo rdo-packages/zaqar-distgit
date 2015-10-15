@@ -1,6 +1,4 @@
 %global project zaqar
-%global milestone
-
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           openstack-%{project}
@@ -8,7 +6,7 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        1.0.0
-Release:        1%{milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
