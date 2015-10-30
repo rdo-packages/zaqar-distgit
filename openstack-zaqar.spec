@@ -13,8 +13,6 @@ License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.tar.gz
 Source1:        %{project}-dist.conf
-# generated configuration file w/ oslo-config-generator
-Source2:        %{project}.conf.sample
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
@@ -26,6 +24,16 @@ BuildRequires:  python-pbr
 BuildRequires:  openstack-utils
 BuildRequires:  systemd
 BuildRequires:  git
+# Required for config file generation
+BuildRequires:  python-oslo-cache >= 0.8.0
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-log >= 1.8.0
+BuildRequires:  python-oslo-policy >= 0.5.0
+BuildRequires:  python-keystonemiddleware >= 2.0.0
+BuildRequires:  python-enum34
+BuildRequires:  python-falcon
+BuildRequires:  python-jsonschema
+BuildRequires:  python-pymongo
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -37,18 +45,28 @@ Requires(postun): systemd
 Requires:         python-six
 Requires:         python-stevedore
 Requires:         python-jsonschema
+Requires:         python-oslo-cache >= 0.8.0
 Requires:         python-oslo-config
+Requires:         python-oslo-context >= 0.2.0
+Requires:         python-oslo-log >= 1.8.0
+Requires:         python-oslo-policy >= 0.5.0
+Requires:         python-oslo-serialization >= 1.4.0
 Requires:         python-oslo-utils
 Requires:         python-oslo-i18n
+Requires:         python-keystonemiddleware >= 2.0.0
 Requires:         python-falcon
+Requires:         python-futurist
 Requires:         python-pymongo
 Requires:         python-sqlite3dbm
 Requires:         python-memcached
 Requires:         python-babel
+Requires:         python-enum34
 Requires:         python-bson
 Requires:         python-sqlalchemy
 Requires:         python-keystoneclient
 Requires:         python-netaddr
+Requires:         python-requests
+Requires:         python-trollius
 Requires:         python-iso8601
 Requires:         python-msgpack
 Requires:         python-webob
@@ -70,9 +88,10 @@ durability, availability,and efficiency goals
 rm -rf {test-,}requirements.txt
 
 %build
-%{__python2} setup.py build
+# Generate config file
+PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar.conf
 
-install -p -D -m 640 %{SOURCE2} etc/%{project}.conf.sample
+%{__python2} setup.py build
 
 # Programmatically update defaults in sample configs
 
