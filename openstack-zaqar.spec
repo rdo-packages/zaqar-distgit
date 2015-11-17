@@ -25,7 +25,6 @@ BuildRequires:  openstack-utils
 BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
-BuildRequires:  python-oslo-cache >= 0.8.0
 BuildRequires:  python-oslo-config
 BuildRequires:  python-oslo-log >= 1.8.0
 BuildRequires:  python-oslo-policy >= 0.5.0
@@ -45,7 +44,6 @@ Requires(postun): systemd
 Requires:         python-six
 Requires:         python-stevedore
 Requires:         python-jsonschema
-Requires:         python-oslo-cache >= 0.8.0
 Requires:         python-oslo-config
 Requires:         python-oslo-context >= 0.2.0
 Requires:         python-oslo-log >= 1.8.0
