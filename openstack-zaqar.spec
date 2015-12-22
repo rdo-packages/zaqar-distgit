@@ -102,7 +102,7 @@ PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar
 sed -i '/^[^#[]/{s/^/#/; s/ //g}; /^#[^ ]/s/ = /=/' etc/%{project}.conf.sample etc/logging.conf.sample
 
 #  TODO: Make this more robust
-#  Note it only edits the first occurance, so assumes a section ordering in sample
+#  Note it only edits the first occurrence, so assumes a section ordering in sample
 #  and also doesn't support multi-valued variables like dhcpbridge_flagfile.
 while read name eq value; do
   test "$name" && test "$value" || continue
