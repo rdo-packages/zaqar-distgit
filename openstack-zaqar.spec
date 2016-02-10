@@ -16,6 +16,7 @@ Source1:        %{project}-dist.conf
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
+Source12:       %{name}@.service
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -132,6 +133,7 @@ install -p -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
 # Install initscripts
 install -p -m 644 %{SOURCE10} %{buildroot}%{_unitdir}
+install -p -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
 
 %pre
 USERNAME=%{project}
@@ -176,6 +178,7 @@ exit 0
 
 %defattr(-,root,root,-)
 %{_unitdir}/%{name}.service
+%{_unitdir}/%{name}@.service
 %{python2_sitelib}/%{project}
 %{python2_sitelib}/%{project}-%{version}*.egg-info
 
