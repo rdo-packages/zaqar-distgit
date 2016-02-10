@@ -1,5 +1,5 @@
 [Unit]
-Description=OpenStack Message Queuing Service (code-named Marconi) server
+Description=OpenStack Message Queuing Service (code-named Zaqar) Server
 After=syslog.target network.target
 
 [Service]
