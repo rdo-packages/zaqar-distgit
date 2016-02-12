@@ -73,6 +73,7 @@ Requires:         python-msgpack
 Requires:         python-webob
 Requires:         python-posix_ipc
 Requires:         python-pbr
+Requires:         python-autobahn
 
 %description
 Zaqar is a new OpenStack project to create a multi-tenant cloud queuing 
