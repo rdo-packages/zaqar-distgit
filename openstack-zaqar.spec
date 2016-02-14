@@ -128,6 +128,7 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/%{project}
 
 install -p -D -m 640 etc/%{project}.conf.sample %{buildroot}%{_sysconfdir}/%{project}/%{project}.conf
 install -p -D -m 640 etc/logging.conf.sample    %{buildroot}%{_sysconfdir}/%{project}/logging.conf
+install -p -D -m 640 etc/policy.json.sample    %{buildroot}%{_sysconfdir}/%{project}/policy.json
 
 # Install logrotate
 install -p -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
@@ -163,6 +164,7 @@ exit 0
 %dir %{_sysconfdir}/%{project}
 %config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/%{project}.conf
 %config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/logging.conf
+%config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/policy.json
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
 %dir %attr(0755, %{project}, root) %{_localstatedir}/log/%{project}
