@@ -82,6 +82,13 @@ architecture, and will support both eventing and job-queuing semantics.
 Users will be able to customize Zaqar to achieve a wide range of performance,
 durability, availability,and efficiency goals
 
+%package -n python-%{project}-tests
+Summary:        Zaqar tests
+Requires:       %{name} = %{epoch}:%{version}-%{release}
+
+%description -n python-%{project}-tests
+This package contains the Zaqar test files.
+
 %prep
 %autosetup -n %{project}-%{upstream_version} -S git
 
@@ -184,6 +191,12 @@ exit 0
 %{_unitdir}/%{name}@.service
 %{python2_sitelib}/%{project}
 %{python2_sitelib}/%{project}-%{version}*.egg-info
+%exclude %{python2_sitelib}/%{project}/tests
+
+%files -n python-%{project}-tests
+%license LICENSE
+%{python2_sitelib}/%{project}/tests
+
 
 %changelog
 
