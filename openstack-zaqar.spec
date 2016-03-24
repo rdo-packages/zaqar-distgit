@@ -1,3 +1,4 @@
+%define milestone .0rc1
 %global project zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -5,13 +6,13 @@ Name:           openstack-%{project}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        2.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
-Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}.tar.gz
+Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}%{?milestone}.tar.gz
 Source1:        %{project}-dist.conf
 
 Source10:       %{name}.service
@@ -35,6 +36,7 @@ BuildRequires:  python-enum34
 BuildRequires:  python-falcon
 BuildRequires:  python-jsonschema
 BuildRequires:  python-pymongo
+BuildRequires:  python-sqlalchemy
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -200,3 +202,5 @@ exit 0
 
 %changelog
 
+* Thu Mar 24 2016 RDO <rdo-list@redhat.com> 2.0.0-0.1.0rc1
+- RC1 Rebuild for Mitaka RC1 rc1
