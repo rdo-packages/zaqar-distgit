@@ -35,6 +35,7 @@ BuildRequires:  python-enum34
 BuildRequires:  python-falcon
 BuildRequires:  python-jsonschema
 BuildRequires:  python-pymongo
+BuildRequires:  python-sqlalchemy
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
