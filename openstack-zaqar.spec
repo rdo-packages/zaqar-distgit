@@ -21,21 +21,21 @@ Source12:       %{name}@.service
 BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
+BuildRequires:  python-pbr >= 1.6
 BuildRequires:  openstack-utils
 BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
-BuildRequires:  python-oslo-cache >= 0.8.0
-BuildRequires:  python-oslo-config
-BuildRequires:  python-oslo-log >= 1.8.0
+BuildRequires:  python-oslo-cache >= 1.5.0
+BuildRequires:  python-oslo-config >= 2:3.7.0
+BuildRequires:  python-oslo-log >= 1.14.0
 BuildRequires:  python-oslo-policy >= 0.5.0
-BuildRequires:  python-keystonemiddleware >= 2.0.0
+BuildRequires:  python-keystonemiddleware >= 4.0.0
 BuildRequires:  python-enum34
 BuildRequires:  python-falcon
 BuildRequires:  python-jsonschema
 BuildRequires:  python-pymongo
-BuildRequires:  python-sqlalchemy
+BuildRequires:  python-sqlalchemy >= 1.0.10
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -47,15 +47,15 @@ Requires(postun): systemd
 Requires:         python-six
 Requires:         python-stevedore
 Requires:         python-jsonschema
-Requires:         python-oslo-cache >= 0.8.0
-Requires:         python-oslo-config
+Requires:         python-oslo-cache >= 1.5.0
+Requires:         python-oslo-config >= 2:3.7.0
 Requires:         python-oslo-context >= 0.2.0
-Requires:         python-oslo-log >= 1.8.0
+Requires:         python-oslo-log >= 1.14.0
 Requires:         python-oslo-policy >= 0.5.0
-Requires:         python-oslo-serialization >= 1.4.0
+Requires:         python-oslo-serialization >= 1.10.0
 Requires:         python-oslo-utils
 Requires:         python-oslo-i18n
-Requires:         python-keystonemiddleware >= 2.0.0
+Requires:         python-keystonemiddleware >= 4.0.0
 Requires:         python-falcon
 Requires:         python-futurist
 Requires:         python-pymongo
@@ -64,16 +64,16 @@ Requires:         python-memcached
 Requires:         python-babel
 Requires:         python-enum34
 Requires:         python-bson
-Requires:         python-sqlalchemy
+Requires:         python-sqlalchemy >= 1.0.10
 Requires:         python-keystoneclient
 Requires:         python-netaddr
 Requires:         python-requests
 Requires:         python-trollius
 Requires:         python-iso8601
-Requires:         python-msgpack
-Requires:         python-webob
+Requires:         python-msgpack >= 0.4.0
+Requires:         python-webob >= 1.2.3
 Requires:         python-posix_ipc
-Requires:         python-pbr
+Requires:         python-pbr >= 1.6
 Requires:         python-autobahn
 
 %description
