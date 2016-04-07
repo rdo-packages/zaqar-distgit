@@ -1,4 +1,3 @@
-%define milestone .0rc2
 %global project zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -7,15 +6,12 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        2.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{version}%{?milestone}.tar.gz
-#
-# patches_base=2.0.0.0rc2
-#
 
 Source1:        %{project}-dist.conf
 
@@ -205,6 +201,9 @@ exit 0
 
 
 %changelog
+* Thu Apr  7 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1:2.0.0-1
+- Upstream 2.0.0
+
 * Sat Apr 02 2016 Haikel Guemar <hguemar@fedoraproject.org> 1:2.0.0-0.2.0rc2
 - Update to 2.0.0.0rc2
 
