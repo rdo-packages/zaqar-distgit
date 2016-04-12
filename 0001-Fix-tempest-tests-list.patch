@@ -1,0 +1,30 @@
+From ee433eeb3034a0bc1590b99499fef250a9d7f188 Mon Sep 17 00:00:00 2001
+From: Ethan Lynn <xjunlin@cn.ibm.com>
+Date: Wed, 30 Mar 2016 23:23:08 +0800
+Subject: [PATCH] Fix tempest tests list
+
+Running command `testr list-tests zaqar` under tempest directory
+get an empty list instead of the list of zaqar tempest list. This
+patch set bath_path to the top directory of zaqar.
+
+Change-Id: I8c91b83bfb5da37a95d6a797f1882221ccdc437a
+Closes-Bug: #1563925
+(cherry picked from commit 82e02a14bf660bded9c4c4a9f66b0a5139479755)
+---
+ zaqar/tests/tempest_plugin/plugin.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/zaqar/tests/tempest_plugin/plugin.py b/zaqar/tests/tempest_plugin/plugin.py
+index 6974b03..86f796a 100644
+--- a/zaqar/tests/tempest_plugin/plugin.py
++++ b/zaqar/tests/tempest_plugin/plugin.py
+@@ -25,6 +25,9 @@ class ZaqarTempestPlugin(plugins.TempestPlugin):
+     def load_tests(self):
+         base_path = os.path.split(os.path.dirname(
+             os.path.abspath(__file__)))[0]
++        # Note: base_path should be set to the top directory
++        # of zaqar.
++        base_path += '/../..'
+         test_dir = "zaqar/tests/tempest_plugin/tests"
+         full_test_dir = os.path.join(base_path, test_dir)
+         return full_test_dir, base_path

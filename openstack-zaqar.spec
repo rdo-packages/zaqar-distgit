@@ -6,7 +6,7 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
@@ -18,6 +18,8 @@ Source1:        %{project}-dist.conf
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
 Source12:       %{name}@.service
+
+Patch0001: 0001-Fix-tempest-tests-list.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
@@ -201,6 +203,9 @@ exit 0
 
 
 %changelog
+* Tue Apr 12 2016 Alan Pevec <apevec AT redhat.com> - 1:2.0.0-2
+- Fix tempest tests list
+
 * Thu Apr  7 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 1:2.0.0-1
 - Upstream 2.0.0
 
