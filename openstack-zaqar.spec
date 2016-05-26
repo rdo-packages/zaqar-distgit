@@ -36,6 +36,8 @@ BuildRequires:  python-falcon
 BuildRequires:  python-jsonschema
 BuildRequires:  python-pymongo
 BuildRequires:  python-sqlalchemy >= 1.0.10
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -102,6 +104,8 @@ rm -rf {test-,}requirements.txt
 PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar.conf
 
 %{__python2} setup.py build
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/%{project}/locale
 
 # Programmatically update defaults in sample configs
 
@@ -145,6 +149,15 @@ install -p -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -p -m 644 %{SOURCE10} %{buildroot}%{_unitdir}
 install -p -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
 
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/%{project}/locale/*/LC_*/%{project}*po
+rm -f %{buildroot}%{python2_sitelib}/%{project}/locale/*pot
+mv %{buildroot}%{python2_sitelib}/%{project}/locale %{buildroot}%{_datadir}/locale
+
+# Find language files
+%find_lang %{project} --all-name
+
 %pre
 USERNAME=%{project}
 GROUPNAME=$USERNAME
@@ -164,7 +177,7 @@ exit 0
 %postun
 %systemd_postun_with_restart openstack-zaqar.service
 
-%files
+%files -f %{project}.lang
 %{!?_licensedir: %global license %%doc}
 %license LICENSE
 %doc README.rst
