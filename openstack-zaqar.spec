@@ -22,7 +22,6 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 1.6
-BuildRequires:  openstack-utils
 BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
