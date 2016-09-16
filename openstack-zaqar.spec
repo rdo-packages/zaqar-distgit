@@ -11,7 +11,7 @@ Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
-Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{upstream_version}.tar.gz
+Source0:        https://tarballs.openstack.org/zaqar/%{project}-%{upstream_version}.tar.gz
 Source1:        %{project}-dist.conf
 
 Source10:       %{name}.service
