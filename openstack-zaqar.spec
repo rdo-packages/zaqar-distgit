@@ -1,4 +1,4 @@
-%global milestone .0rc1
+%global milestone .0rc2
 %global project zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -7,14 +7,14 @@ Name:           openstack-%{project}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        3.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        0.3%{?milestone}%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        http://tarballs.openstack.org/zaqar/%{project}-%{upstream_version}.tar.gz
 #
-# patches_base=3.0.0.0rc1
+# patches_base=3.0.0.0rc2
 #
 
 Source1:        %{project}-dist.conf
@@ -217,6 +217,9 @@ exit 0
 
 
 %changelog
+* Wed Sep 28 2016 Alan Pevec <alan.pevec@redhat.com> 1:3.0.0-0.3.0rc2
+- Update to 3.0.0.0rc2
+
 * Wed Sep 21 2016 Alfredo Moralejo <amoralej@redhat.com> 1:3.0.0-0.2.0rc1
 - Update to 3.0.0.0rc1
 
