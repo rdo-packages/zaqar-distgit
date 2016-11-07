@@ -129,7 +129,11 @@ done < %{SOURCE1}']'
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
- 
+# Create fake egg-info for the tempest plugin
+# TODO switch to %{service} everywhere as in openstack-example.spec
+%global service zaqar
+%py2_entrypoint %{service} %{service}
+
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
 install -d -m 755 %{buildroot}%{_datadir}/%{project}
@@ -212,7 +216,7 @@ exit 0
 %files -n python-%{project}-tests
 %license LICENSE
 %{python2_sitelib}/%{project}/tests
-
+%{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
 
