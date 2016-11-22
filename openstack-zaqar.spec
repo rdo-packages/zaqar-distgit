@@ -35,6 +35,8 @@ BuildRequires:  python-falcon
 BuildRequires:  python-jsonschema
 BuildRequires:  python-pymongo
 BuildRequires:  python-sqlalchemy >= 1.0.10
+BuildRequires:  python-osprofiler
+BuildRequires:  python-oslo-messaging
 # Required to compile translation files
 BuildRequires:  python-babel
 
@@ -76,6 +78,7 @@ Requires:         python-webob >= 1.2.3
 Requires:         python-posix_ipc
 Requires:         python-pbr >= 1.6
 Requires:         python-autobahn
+Requires:         python-osprofiler >= 1.4.0
 
 %description
 Zaqar is a new OpenStack project to create a multi-tenant cloud queuing 
