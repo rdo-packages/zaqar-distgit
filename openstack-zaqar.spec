@@ -79,6 +79,7 @@ Requires:         python-posix_ipc
 Requires:         python-pbr >= 1.6
 Requires:         python-autobahn
 Requires:         python-osprofiler >= 1.4.0
+Requires:         python-alembic
 
 %description
 Zaqar is a new OpenStack project to create a multi-tenant cloud queuing 
@@ -129,7 +130,7 @@ done < %{SOURCE1}']'
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
- 
+
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
 install -d -m 755 %{buildroot}%{_datadir}/%{project}
@@ -196,6 +197,7 @@ exit 0
 %{_bindir}/%{project}-server
 %{_bindir}/%{project}-bench
 %{_bindir}/%{project}-gc
+%{_bindir}/%{project}-sql-db-manage
 
 %{_datarootdir}/%{project}
 
@@ -215,4 +217,3 @@ exit 0
 
 
 %changelog
-
