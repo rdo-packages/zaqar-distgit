@@ -217,3 +217,4 @@ exit 0
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/zaqar/commit/?id=fa94c14ae5a3e5ca4754fdfe14a08d0a67df9f79
