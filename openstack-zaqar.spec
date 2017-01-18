@@ -19,6 +19,7 @@ Source11:       %{name}.logrotate
 Source12:       %{name}@.service
 
 BuildArch:      noarch
+BuildRequires:  openstack-macros
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr >= 1.6
