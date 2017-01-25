@@ -222,3 +222,4 @@ exit 0
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/zaqar/commit/?id=cdb3c044da1faa2fd5c28ce048b615d6d0708d8e
