@@ -48,18 +48,20 @@ Requires(post):   systemd
 Requires(preun):  systemd
 Requires(postun): systemd
 
+Requires:         python-enum34
 Requires:         python-six
 Requires:         python-stevedore
 Requires:         python-jsonschema
 Requires:         python-oslo-cache >= 1.5.0
-Requires:         python-oslo-config >= 2:3.7.0
-Requires:         python-oslo-context >= 0.2.0
-Requires:         python-oslo-log >= 1.14.0
-Requires:         python-oslo-policy >= 0.5.0
+Requires:         python-oslo-config >= 2:3.14.0
+Requires:         python-oslo-context >= 2.9.0
+Requires:         python-oslo-log >= 3.11.0
+Requires:         python-oslo-messaging >= 5.14.0
+Requires:         python-oslo-policy >= 1.17.0
 Requires:         python-oslo-serialization >= 1.10.0
-Requires:         python-oslo-utils
-Requires:         python-oslo-i18n
-Requires:         python-keystonemiddleware >= 4.0.0
+Requires:         python-oslo-utils >= 3.18.0
+Requires:         python-oslo-i18n >= 2.1.0
+Requires:         python-keystonemiddleware >= 4.12.0
 Requires:         python-falcon
 Requires:         python-futurist
 Requires:         python-pymongo
@@ -75,9 +77,9 @@ Requires:         python-requests
 Requires:         python-trollius
 Requires:         python-iso8601
 Requires:         python-msgpack >= 0.4.0
-Requires:         python-webob >= 1.2.3
+Requires:         python-webob >= 1.6.0
 Requires:         python-posix_ipc
-Requires:         python-pbr >= 1.6
+Requires:         python-pbr >= 1.8
 Requires:         python-autobahn
 Requires:         python-osprofiler >= 1.4.0
 Requires:         python-alembic
