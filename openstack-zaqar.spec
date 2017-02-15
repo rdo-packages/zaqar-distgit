@@ -198,7 +198,7 @@ exit 0
 %config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/policy.json
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
-%dir %attr(0755, %{project}, root) %{_localstatedir}/log/%{project}
+%dir %attr(0750, %{project}, root) %{_localstatedir}/log/%{project}
 
 #%{_bindir}/marconi-server
 %{_bindir}/%{project}-server
