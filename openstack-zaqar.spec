@@ -61,6 +61,7 @@ Requires:         python-oslo-policy >= 1.17.0
 Requires:         python-oslo-serialization >= 1.10.0
 Requires:         python-oslo-utils >= 3.18.0
 Requires:         python-oslo-i18n >= 2.1.0
+Requires:         python-oslo-reports >= 0.6.0
 Requires:         python-keystonemiddleware >= 4.12.0
 Requires:         python-falcon
 Requires:         python-futurist
