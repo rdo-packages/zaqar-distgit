@@ -1,6 +1,9 @@
-# UUID                                  	Group Name
-#
-63673ea7f2ae6a5666566b1ea9f14e473d00f5a9	rdo-core
-69b8e13d484164ddbb6b614f76a444fee4311d0e	openstack/zaqar-distgit-ptl
-8db2f997b540cb7a0e955c1478d926957043152d	openstack/zaqar-distgit-core
-global:Registered-Users                 	Registered Users
+# UUID Group Name
+global:Registered-Users	Registered Users
+cbe1718234e6911b1198217cf8352eba42e17802	openstack/zaqar-core
+4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
+global:Anonymous-Users	Anonymous Users
+f846ffaa77d0729565d2e06799e6dc434c335c38	openstack/zaqar-ptl
+05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
+401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Non-Interactive Users
