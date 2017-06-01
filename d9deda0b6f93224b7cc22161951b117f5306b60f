@@ -1,0 +1,9 @@
+Code-Review+1: zaneb <zbitter@redhat.com>
+Code-Review+2: Thomas Hervé <therve@redhat.com>
+Workflow+1: Thomas Hervé <therve@redhat.com>
+Verified+2: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-by: Jenkins CI <admin@rpmfactory.beta.rdoproject.org>
+Submitted-at: Thu, 01 Jun 2017 14:29:19 +0000
+Reviewed-on: https://review.rdoproject.org/r/6814
+Project: openstack/zaqar-distgit
+Branch: refs/heads/newton-rdo
