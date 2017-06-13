@@ -28,6 +28,7 @@ BuildRequires:  git
 # Required for config file generation
 BuildRequires:  python-oslo-cache >= 1.5.0
 BuildRequires:  python-oslo-config >= 2:3.7.0
+BuildRequires:  python-oslo-db >= 4.15.0
 BuildRequires:  python-oslo-log >= 1.14.0
 BuildRequires:  python-oslo-policy >= 0.5.0
 BuildRequires:  python-keystonemiddleware >= 4.0.0
@@ -55,6 +56,7 @@ Requires:         python-jsonschema
 Requires:         python-oslo-cache >= 1.5.0
 Requires:         python-oslo-config >= 2:3.14.0
 Requires:         python-oslo-context >= 2.9.0
+Requires:         python-oslo-db >= 4.15.0
 Requires:         python-oslo-log >= 3.11.0
 Requires:         python-oslo-messaging >= 5.14.0
 Requires:         python-oslo-policy >= 1.17.0
