@@ -39,6 +39,8 @@ BuildRequires:  python-pymongo
 BuildRequires:  python-sqlalchemy >= 1.0.10
 BuildRequires:  python-osprofiler
 BuildRequires:  python-oslo-messaging
+BuildRequires:  python-autobahn
+BuildRequires:  python-trollius
 # Required to compile translation files
 BuildRequires:  python-babel
 
