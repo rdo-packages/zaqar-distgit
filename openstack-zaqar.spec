@@ -27,9 +27,9 @@ BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
 BuildRequires:  python-oslo-cache >= 1.5.0
-BuildRequires:  python-oslo-config >= 2:3.7.0
-BuildRequires:  python-oslo-db >= 4.15.0
-BuildRequires:  python-oslo-log >= 1.14.0
+BuildRequires:  python-oslo-config >= 2:4.0.0
+BuildRequires:  python-oslo-db >= 4.24.0
+BuildRequires:  python-oslo-log >= 3.22.0
 BuildRequires:  python-oslo-policy >= 0.5.0
 BuildRequires:  python-keystonemiddleware >= 4.0.0
 BuildRequires:  python-enum34
@@ -56,14 +56,14 @@ Requires:         python-six
 Requires:         python-stevedore
 Requires:         python-jsonschema
 Requires:         python-oslo-cache >= 1.5.0
-Requires:         python-oslo-config >= 2:3.14.0
-Requires:         python-oslo-context >= 2.9.0
-Requires:         python-oslo-db >= 4.15.0
-Requires:         python-oslo-log >= 3.11.0
-Requires:         python-oslo-messaging >= 5.14.0
-Requires:         python-oslo-policy >= 1.17.0
+Requires:         python-oslo-config >= 2:4.0.0
+Requires:         python-oslo-context >= 2.14.0
+Requires:         python-oslo-db >= 4.24.0
+Requires:         python-oslo-log >= 3.22.0
+Requires:         python-oslo-messaging >= 5.24.2
+Requires:         python-oslo-policy >= 1.23.0
 Requires:         python-oslo-serialization >= 1.10.0
-Requires:         python-oslo-utils >= 3.18.0
+Requires:         python-oslo-utils >= 3.20.0
 Requires:         python-oslo-i18n >= 2.1.0
 Requires:         python-oslo-reports >= 0.6.0
 Requires:         python-keystonemiddleware >= 4.12.0
@@ -73,18 +73,15 @@ Requires:         python-pymongo
 Requires:         python-sqlite3dbm
 Requires:         python-memcached
 Requires:         python-babel
-Requires:         python-enum34
 Requires:         python-bson
 Requires:         python-sqlalchemy >= 1.0.10
 Requires:         python-keystoneclient
-Requires:         python-netaddr
 Requires:         python-requests
 Requires:         python-trollius
 Requires:         python-iso8601
 Requires:         python-msgpack >= 0.4.0
-Requires:         python-webob >= 1.6.0
-Requires:         python-posix_ipc
-Requires:         python-pbr >= 1.8
+Requires:         python-webob >= 1.7.1
+Requires:         python-pbr >= 2.0.0
 Requires:         python-autobahn
 Requires:         python-osprofiler >= 1.4.0
 Requires:         python-alembic
