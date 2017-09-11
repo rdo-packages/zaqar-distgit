@@ -1,7 +1,7 @@
-%global project zaqar
+%global service zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
-Name:           openstack-%{project}
+Name:           openstack-%{service}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
@@ -11,8 +11,8 @@ Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
-Source0:        https://tarballs.openstack.org/zaqar/%{project}-%{upstream_version}.tar.gz
-Source1:        %{project}-dist.conf
+Source0:        https://tarballs.openstack.org/zaqar/%{service}-%{upstream_version}.tar.gz
+Source1:        %{service}-dist.conf
 
 Source10:       %{name}.service
 Source11:       %{name}.logrotate
@@ -93,15 +93,15 @@ architecture, and will support both eventing and job-queuing semantics.
 Users will be able to customize Zaqar to achieve a wide range of performance,
 durability, availability,and efficiency goals
 
-%package -n python-%{project}-tests
+%package -n python-%{service}-tests
 Summary:        Zaqar tests
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
-%description -n python-%{project}-tests
+%description -n python-%{service}-tests
 This package contains the Zaqar test files.
 
 %prep
-%autosetup -n %{project}-%{upstream_version} -S git
+%autosetup -n %{service}-%{upstream_version} -S git
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
@@ -113,7 +113,7 @@ PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar
 
 %{__python2} setup.py build
 # Generate i18n files
-%{__python2} setup.py compile_catalog -d build/lib/%{project}/locale
+%{__python2} setup.py compile_catalog -d build/lib/%{service}/locale
 
 # Programmatically update defaults in sample configs
 
@@ -121,14 +121,14 @@ PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar
 #  Since icehouse, there was an uncommented keystone_authtoken section
 #  at the end of the file which mimics but also conflicted with our
 #  distro editing that had been done for many releases.
-sed -i '/^[^#[]/{s/^/#/; s/ //g}; /^#[^ ]/s/ = /=/' etc/%{project}.conf.sample etc/logging.conf.sample
+sed -i '/^[^#[]/{s/^/#/; s/ //g}; /^#[^ ]/s/ = /=/' etc/%{service}.conf.sample etc/logging.conf.sample
 
 #  TODO: Make this more robust
 #  Note it only edits the first occurrence, so assumes a section ordering in sample
 #  and also doesn't support multi-valued variables like dhcpbridge_flagfile.
 while read name eq value; do
   test "$name" && test "$value" || continue
-  sed -i "0,/^# *$name=/{s!^# *$name=.*!#$name=$value!}" etc/%{project}.conf.sample
+  sed -i "0,/^# *$name=/{s!^# *$name=.*!#$name=$value!}" etc/%{service}.conf.sample
 done < %{SOURCE1}']'
 
 
@@ -136,23 +136,21 @@ done < %{SOURCE1}']'
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
 # Create fake egg-info for the tempest plugin
-# TODO switch to %{service} everywhere as in openstack-example.spec
-%global service zaqar
 %py2_entrypoint %{service} %{service}
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
-install -d -m 755 %{buildroot}%{_datadir}/%{project}
-install -d -m 755 %{buildroot}%{_sharedstatedir}/%{project}
-install -d -m 755 %{buildroot}%{_localstatedir}/log/%{project}
+install -d -m 755 %{buildroot}%{_datadir}/%{service}
+install -d -m 755 %{buildroot}%{_sharedstatedir}/%{service}
+install -d -m 755 %{buildroot}%{_localstatedir}/log/%{service}
 
 # Install config files
-install -p -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/%{project}/%{project}-dist.conf
-install -d -m 755 %{buildroot}%{_sysconfdir}/%{project}
+install -p -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/%{service}/%{service}-dist.conf
+install -d -m 755 %{buildroot}%{_sysconfdir}/%{service}
 
-install -p -D -m 640 etc/%{project}.conf.sample %{buildroot}%{_sysconfdir}/%{project}/%{project}.conf
-install -p -D -m 640 etc/logging.conf.sample    %{buildroot}%{_sysconfdir}/%{project}/logging.conf
-install -p -D -m 640 etc/policy.json.sample    %{buildroot}%{_sysconfdir}/%{project}/policy.json
+install -p -D -m 640 etc/%{service}.conf.sample %{buildroot}%{_sysconfdir}/%{service}/%{service}.conf
+install -p -D -m 640 etc/logging.conf.sample    %{buildroot}%{_sysconfdir}/%{service}/logging.conf
+install -p -D -m 640 etc/policy.json.sample    %{buildroot}%{_sysconfdir}/%{service}/policy.json
 
 # Install logrotate
 install -p -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
@@ -163,15 +161,15 @@ install -p -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
-rm -f %{buildroot}%{python2_sitelib}/%{project}/locale/*/LC_*/%{project}*po
-rm -f %{buildroot}%{python2_sitelib}/%{project}/locale/*pot
-mv %{buildroot}%{python2_sitelib}/%{project}/locale %{buildroot}%{_datadir}/locale
+rm -f %{buildroot}%{python2_sitelib}/%{service}/locale/*/LC_*/%{service}*po
+rm -f %{buildroot}%{python2_sitelib}/%{service}/locale/*pot
+mv %{buildroot}%{python2_sitelib}/%{service}/locale %{buildroot}%{_datadir}/locale
 
 # Find language files
-%find_lang %{project} --all-name
+%find_lang %{service} --all-name
 
 %pre
-USERNAME=%{project}
+USERNAME=%{service}
 GROUPNAME=$USERNAME
 HOMEDIR=%{_sharedstatedir}/$USERNAME
 getent group $GROUPNAME >/dev/null || groupadd -r $GROUPNAME
@@ -189,40 +187,40 @@ exit 0
 %postun
 %systemd_postun_with_restart openstack-zaqar.service
 
-%files -f %{project}.lang
+%files -f %{service}.lang
 %{!?_licensedir: %global license %%doc}
 %license LICENSE
 %doc README.rst
 
-%dir %{_sysconfdir}/%{project}
-%config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/%{project}.conf
-%config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/logging.conf
-%config(noreplace) %attr(0640, root, %{project}) %{_sysconfdir}/%{project}/policy.json
+%dir %{_sysconfdir}/%{service}
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/%{service}.conf
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/logging.conf
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/policy.json
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
-%dir %attr(0750, %{project}, root) %{_localstatedir}/log/%{project}
+%dir %attr(0750, %{service}, root) %{_localstatedir}/log/%{service}
 
 #%{_bindir}/marconi-server
-%{_bindir}/%{project}-server
-%{_bindir}/%{project}-bench
-%{_bindir}/%{project}-gc
-%{_bindir}/%{project}-sql-db-manage
+%{_bindir}/%{service}-server
+%{_bindir}/%{service}-bench
+%{_bindir}/%{service}-gc
+%{_bindir}/%{service}-sql-db-manage
 
-%{_datarootdir}/%{project}
+%{_datarootdir}/%{service}
 
-%defattr(-, %{project}, %{project}, -)
-%dir %{_sharedstatedir}/%{project}
+%defattr(-, %{service}, %{service}, -)
+%dir %{_sharedstatedir}/%{service}
 
 %defattr(-,root,root,-)
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}@.service
-%{python2_sitelib}/%{project}
-%{python2_sitelib}/%{project}-%{version}*.egg-info
-%exclude %{python2_sitelib}/%{project}/tests
+%{python2_sitelib}/%{service}
+%{python2_sitelib}/%{service}-%{version}*.egg-info
+%exclude %{python2_sitelib}/%{service}/tests
 
-%files -n python-%{project}-tests
+%files -n python-%{service}-tests
 %license LICENSE
-%{python2_sitelib}/%{project}/tests
+%{python2_sitelib}/%{service}/tests
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
