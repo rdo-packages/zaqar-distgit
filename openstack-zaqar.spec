@@ -47,9 +47,7 @@ BuildRequires:  python-babel
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
 Requires(pre):  shadow-utils
-Requires(post):   systemd
-Requires(preun):  systemd
-Requires(postun): systemd
+%{?systemd_requires}
 
 Requires:         python-enum34
 Requires:         python-six
