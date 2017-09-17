@@ -43,6 +43,7 @@ BuildRequires:  python-autobahn
 BuildRequires:  python-trollius
 # Required to compile translation files
 BuildRequires:  python-babel
+BuildRequires:  openstack-macros
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
@@ -105,7 +106,7 @@ This package contains the Zaqar test files.
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
-rm -rf {test-,}requirements.txt
+%py_req_cleanup
 
 %build
 # Generate config file
