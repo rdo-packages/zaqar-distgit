@@ -70,7 +70,6 @@ Requires:         python-keystonemiddleware >= 4.12.0
 Requires:         python-falcon
 Requires:         python-futurist
 Requires:         python-pymongo
-Requires:         python-sqlite3dbm
 Requires:         python-memcached
 Requires:         python-babel
 Requires:         python-bson
