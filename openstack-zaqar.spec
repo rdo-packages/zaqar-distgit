@@ -1,5 +1,11 @@
 %global service zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%global common_desc \
+Zaqar is a new OpenStack project to create a multi-tenant cloud queuing \
+service.The project will define a clean, RESTful API, use a modular \
+architecture, and will support both eventing and job-queuing semantics. \
+Users will be able to customize Zaqar to achieve a wide range of performance, \
+durability, availability,and efficiency goals
 
 Name:           openstack-%{service}
 # Liberty semver reset
@@ -85,17 +91,15 @@ Requires:         python-osprofiler >= 1.4.0
 Requires:         python-alembic
 
 %description
-Zaqar is a new OpenStack project to create a multi-tenant cloud queuing 
-service.The project will define a clean, RESTful API, use a modular 
-architecture, and will support both eventing and job-queuing semantics.
-Users will be able to customize Zaqar to achieve a wide range of performance,
-durability, availability,and efficiency goals
+%{common_desc}
 
 %package -n python-%{service}-tests
 Summary:        Zaqar tests
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
 %description -n python-%{service}-tests
+%{common_desc}
+
 This package contains the Zaqar test files.
 
 %prep
