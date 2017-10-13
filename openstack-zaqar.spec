@@ -131,8 +131,7 @@ sed -i '/^[^#[]/{s/^/#/; s/ //g}; /^#[^ ]/s/ = /=/' etc/%{service}.conf.sample e
 while read name eq value; do
   test "$name" && test "$value" || continue
   sed -i "0,/^# *$name=/{s!^# *$name=.*!#$name=$value!}" etc/%{service}.conf.sample
-done < %{SOURCE1}']'
-
+done < %{SOURCE1}
 
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
