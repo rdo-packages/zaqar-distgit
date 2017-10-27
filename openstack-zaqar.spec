@@ -136,9 +136,6 @@ done < %{SOURCE1}
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
 
-# Create fake egg-info for the tempest plugin
-%py2_entrypoint %{service} %{service}
-
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
 install -d -m 755 %{buildroot}%{_datadir}/%{service}
@@ -222,6 +219,5 @@ exit 0
 %files -n python-%{service}-tests
 %license LICENSE
 %{python2_sitelib}/%{service}/tests
-%{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
