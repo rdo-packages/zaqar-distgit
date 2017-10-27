@@ -97,6 +97,10 @@ Requires:         python-alembic
 Summary:        Zaqar tests
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
+# Adding python-zaqar-tests-tempest as Requires to keep backward
+# compatibilty
+Requires:       python-zaqar-tests-tempest
+
 %description -n python-%{service}-tests
 %{common_desc}
 
@@ -135,9 +139,6 @@ done < %{SOURCE1}
 
 %install
 %{__python2} setup.py install -O1 --skip-build --root %{buildroot}
-
-# Create fake egg-info for the tempest plugin
-%py2_entrypoint %{service} %{service}
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
@@ -222,6 +223,5 @@ exit 0
 %files -n python-%{service}-tests
 %license LICENSE
 %{python2_sitelib}/%{service}/tests
-%{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
