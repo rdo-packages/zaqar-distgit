@@ -47,6 +47,7 @@ BuildRequires:  python-osprofiler
 BuildRequires:  python-oslo-messaging
 BuildRequires:  python-autobahn
 BuildRequires:  python-trollius
+BuildRequires:  python-redis
 # Required to compile translation files
 BuildRequires:  python-babel
 BuildRequires:  openstack-macros
@@ -89,6 +90,7 @@ Requires:         python-pbr >= 2.0.0
 Requires:         python-autobahn
 Requires:         python-osprofiler >= 1.4.0
 Requires:         python-alembic
+Requires:         python-redis
 
 %description
 %{common_desc}
