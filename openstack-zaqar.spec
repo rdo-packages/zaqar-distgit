@@ -27,29 +27,29 @@ Source12:       %{name}@.service
 BuildArch:      noarch
 BuildRequires:  openstack-macros
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr >= 1.6
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr >= 1.6
 BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
-BuildRequires:  python-oslo-cache >= 1.5.0
-BuildRequires:  python-oslo-config >= 2:4.0.0
-BuildRequires:  python-oslo-db >= 4.24.0
-BuildRequires:  python-oslo-log >= 3.22.0
-BuildRequires:  python-oslo-policy >= 0.5.0
-BuildRequires:  python-keystonemiddleware >= 4.0.0
+BuildRequires:  python2-oslo-cache >= 1.26.0
+BuildRequires:  python2-oslo-config >= 2:5.1.0
+BuildRequires:  python2-oslo-db >= 4.27.0
+BuildRequires:  python2-oslo-log >= 3.36.0
+BuildRequires:  python2-oslo-policy >= 1.30.0
+BuildRequires:  python2-keystonemiddleware >= 4.17.0
 BuildRequires:  python-enum34
-BuildRequires:  python-falcon
-BuildRequires:  python-jsonschema
+BuildRequires:  python2-falcon
+BuildRequires:  python2-jsonschema
 BuildRequires:  python-pymongo
-BuildRequires:  python-sqlalchemy >= 1.0.10
-BuildRequires:  python-osprofiler
-BuildRequires:  python-oslo-messaging
-BuildRequires:  python-autobahn
+BuildRequires:  python2-sqlalchemy >= 1.0.10
+BuildRequires:  python2-osprofiler
+BuildRequires:  python2-oslo-messaging
+BuildRequires:  python2-autobahn
 BuildRequires:  python-trollius
 BuildRequires:  python-redis
 # Required to compile translation files
-BuildRequires:  python-babel
+BuildRequires:  python2-babel
 BuildRequires:  openstack-macros
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
@@ -58,38 +58,38 @@ Requires(pre):  shadow-utils
 %{?systemd_requires}
 
 Requires:         python-enum34
-Requires:         python-six
-Requires:         python-stevedore
-Requires:         python-jsonschema
-Requires:         python-oslo-cache >= 1.5.0
-Requires:         python-oslo-config >= 2:4.0.0
-Requires:         python-oslo-context >= 2.14.0
-Requires:         python-oslo-db >= 4.24.0
-Requires:         python-oslo-log >= 3.22.0
-Requires:         python-oslo-messaging >= 5.24.2
-Requires:         python-oslo-policy >= 1.23.0
-Requires:         python-oslo-serialization >= 1.10.0
-Requires:         python-oslo-utils >= 3.20.0
-Requires:         python-oslo-i18n >= 2.1.0
-Requires:         python-oslo-reports >= 0.6.0
-Requires:         python-keystonemiddleware >= 4.12.0
-Requires:         python-falcon
-Requires:         python-futurist
+Requires:         python2-six
+Requires:         python2-stevedore
+Requires:         python2-jsonschema
+Requires:         python2-oslo-cache >= 1.26.0
+Requires:         python2-oslo-config >= 2:5.1.0
+Requires:         python2-oslo-context >= 2.19.2
+Requires:         python2-oslo-db >= 4.27.0
+Requires:         python2-oslo-log >= 3.36.0
+Requires:         python2-oslo-messaging >= 5.29.0
+Requires:         python2-oslo-policy >= 1.30.0
+Requires:         python2-oslo-serialization >= 2.18.0
+Requires:         python2-oslo-utils >= 3.33.0
+Requires:         python2-oslo-i18n >= 3.15.3
+Requires:         python2-oslo-reports >= 1.18.0
+Requires:         python2-keystonemiddleware >= 4.17.0
+Requires:         python2-falcon
+Requires:         python2-futurist
 Requires:         python-pymongo
 Requires:         python-memcached
-Requires:         python-babel
+Requires:         python2-babel
 Requires:         python-bson
-Requires:         python-sqlalchemy >= 1.0.10
-Requires:         python-keystoneclient
-Requires:         python-requests
+Requires:         python2-sqlalchemy >= 1.0.10
+Requires:         python2-keystoneclient
+Requires:         python2-requests
 Requires:         python-trollius
-Requires:         python-iso8601
+Requires:         python2-iso8601
 Requires:         python-msgpack >= 0.4.0
 Requires:         python-webob >= 1.7.1
-Requires:         python-pbr >= 2.0.0
-Requires:         python-autobahn
-Requires:         python-osprofiler >= 1.4.0
-Requires:         python-alembic
+Requires:         python2-pbr >= 2.0.0
+Requires:         python2-autobahn
+Requires:         python2-osprofiler >= 1.4.0
+Requires:         python2-alembic
 Requires:         python-redis
 
 %description
