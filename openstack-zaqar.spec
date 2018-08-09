@@ -33,7 +33,7 @@ BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
 BuildRequires:  python2-oslo-cache >= 1.26.0
-BuildRequires:  python2-oslo-config >= 2:5.1.0
+BuildRequires:  python2-oslo-config >= 2:5.2.0
 BuildRequires:  python2-oslo-db >= 4.27.0
 BuildRequires:  python2-oslo-log >= 3.36.0
 BuildRequires:  python2-oslo-policy >= 1.30.0
@@ -62,7 +62,7 @@ Requires:         python2-six
 Requires:         python2-stevedore
 Requires:         python2-jsonschema
 Requires:         python2-oslo-cache >= 1.26.0
-Requires:         python2-oslo-config >= 2:5.1.0
+Requires:         python2-oslo-config >= 2:5.2.0
 Requires:         python2-oslo-context >= 2.19.2
 Requires:         python2-oslo-db >= 4.27.0
 Requires:         python2-oslo-log >= 3.36.0
@@ -84,7 +84,7 @@ Requires:         python2-keystoneclient
 Requires:         python2-requests
 Requires:         python-trollius
 Requires:         python2-iso8601
-Requires:         python-msgpack >= 0.4.0
+Requires:         python-msgpack >= 0.5.1
 Requires:         python-webob >= 1.7.1
 Requires:         python2-pbr >= 2.0.0
 Requires:         python2-autobahn
