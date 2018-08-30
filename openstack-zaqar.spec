@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %global service zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global common_desc \
@@ -13,14 +12,12 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        7.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        ASL 2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        https://tarballs.openstack.org/zaqar/%{service}-%{upstream_version}.tar.gz
-#
-# patches_base=7.0.0.0rc1
 #
 
 Source1:        %{service}-dist.conf
@@ -226,6 +223,9 @@ exit 0
 %{python2_sitelib}/%{service}/tests
 
 %changelog
+* Thu Aug 30 2018 RDO <dev@lists.rdoproject.org> 1:7.0.0-1
+- Update to 7.0.0
+
 * Thu Aug 16 2018 RDO <dev@lists.rdoproject.org> 1:7.0.0-0.1.0rc1
 - Update to 7.0.0.0rc1
 
