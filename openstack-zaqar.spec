@@ -48,6 +48,7 @@ BuildRequires:  python%{pyver}-oslo-config >= 2:5.2.0
 BuildRequires:  python%{pyver}-oslo-db >= 4.27.0
 BuildRequires:  python%{pyver}-oslo-log >= 3.36.0
 BuildRequires:  python%{pyver}-oslo-policy >= 1.30.0
+BuildRequires:  python%{pyver}-oslo-upgradecheck>= 0.1.0
 BuildRequires:  python%{pyver}-keystonemiddleware >= 4.17.0
 BuildRequires:  python%{pyver}-falcon
 BuildRequires:  python%{pyver}-jsonschema
@@ -90,6 +91,7 @@ Requires:         python%{pyver}-oslo-serialization >= 2.18.0
 Requires:         python%{pyver}-oslo-utils >= 3.33.0
 Requires:         python%{pyver}-oslo-i18n >= 3.15.3
 Requires:         python%{pyver}-oslo-reports >= 1.18.0
+Requires:         python%{pyver}-oslo-upgradecheck>= 0.1.0
 Requires:         python%{pyver}-keystonemiddleware >= 4.17.0
 Requires:         python%{pyver}-falcon
 Requires:         python%{pyver}-futurist
@@ -231,6 +233,7 @@ exit 0
 
 #%{_bindir}/marconi-server
 %{_bindir}/%{service}-server
+%{_bindir}/%{service}-status
 %{_bindir}/%{service}-bench
 %{_bindir}/%{service}-gc
 %{_bindir}/%{service}-sql-db-manage
