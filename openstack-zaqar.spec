@@ -5,7 +5,7 @@ Name:           openstack-%{project}
 # Liberty semver reset
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
-Version:        5.0.0
+Version:        5.0.1
 Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
@@ -228,6 +228,9 @@ exit 0
 %{python2_sitelib}/%{service}_tests.egg-info
 
 %changelog
+* Fri Apr 26 2019 RDO <dev@lists.rdoproject.org> 1:5.0.1-1
+- Update to 5.0.1
+
 * Wed Aug 30 2017 rdo-trunk <javier.pena@redhat.com> 1:5.0.0-1
 - Update to 5.0.0
 
