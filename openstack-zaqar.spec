@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %global service zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global common_desc \
@@ -37,102 +26,82 @@ Source12:       %{name}@.service
 
 BuildArch:      noarch
 BuildRequires:  openstack-macros
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-pbr >= 1.6
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pbr >= 1.6
 BuildRequires:  systemd
 BuildRequires:  git
 # Required for config file generation
-BuildRequires:  python%{pyver}-oslo-cache >= 1.26.0
-BuildRequires:  python%{pyver}-oslo-config >= 2:5.2.0
-BuildRequires:  python%{pyver}-oslo-db >= 4.27.0
-BuildRequires:  python%{pyver}-oslo-log >= 3.36.0
-BuildRequires:  python%{pyver}-oslo-policy >= 1.30.0
-BuildRequires:  python%{pyver}-oslo-upgradecheck >= 0.1.0
-BuildRequires:  python%{pyver}-keystonemiddleware >= 4.17.0
-BuildRequires:  python%{pyver}-falcon
-BuildRequires:  python%{pyver}-jsonschema
-BuildRequires:  python%{pyver}-sqlalchemy >= 1.0.10
-BuildRequires:  python%{pyver}-osprofiler
-BuildRequires:  python%{pyver}-oslo-messaging
-BuildRequires:  python%{pyver}-autobahn
+BuildRequires:  python3-oslo-cache >= 1.26.0
+BuildRequires:  python3-oslo-config >= 2:5.2.0
+BuildRequires:  python3-oslo-db >= 4.27.0
+BuildRequires:  python3-oslo-log >= 3.36.0
+BuildRequires:  python3-oslo-policy >= 1.30.0
+BuildRequires:  python3-oslo-upgradecheck >= 0.1.0
+BuildRequires:  python3-keystonemiddleware >= 4.17.0
+BuildRequires:  python3-falcon
+BuildRequires:  python3-jsonschema
+BuildRequires:  python3-sqlalchemy >= 1.0.10
+BuildRequires:  python3-osprofiler
+BuildRequires:  python3-oslo-messaging
+BuildRequires:  python3-autobahn
 # Required to compile translation files
-BuildRequires:  python%{pyver}-babel
+BuildRequires:  python3-babel
 BuildRequires:  openstack-macros
 
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python-enum34
-BuildRequires:  python-pymongo
-BuildRequires:  python-trollius
-BuildRequires:  python-redis
-%else
-BuildRequires:  python%{pyver}-pymongo
-BuildRequires:  python%{pyver}-trollius
-BuildRequires:  python%{pyver}-redis
-%endif
+BuildRequires:  python3-pymongo
+BuildRequires:  python3-trollius
+BuildRequires:  python3-redis
 
 Obsoletes:      openstack-marconi < 2014.1-2.2
 
 Requires(pre):  shadow-utils
 %{?systemd_requires}
 
-Requires:         python%{pyver}-six
-Requires:         python%{pyver}-stevedore
-Requires:         python%{pyver}-jsonschema
-Requires:         python%{pyver}-oslo-cache >= 1.26.0
-Requires:         python%{pyver}-oslo-config >= 2:5.2.0
-Requires:         python%{pyver}-oslo-context >= 2.19.2
-Requires:         python%{pyver}-oslo-db >= 4.27.0
-Requires:         python%{pyver}-oslo-log >= 3.36.0
-Requires:         python%{pyver}-oslo-messaging >= 5.29.0
-Requires:         python%{pyver}-oslo-policy >= 1.30.0
-Requires:         python%{pyver}-oslo-serialization >= 2.18.0
-Requires:         python%{pyver}-oslo-utils >= 3.33.0
-Requires:         python%{pyver}-oslo-i18n >= 3.15.3
-Requires:         python%{pyver}-oslo-reports >= 1.18.0
-Requires:         python%{pyver}-oslo-upgradecheck >= 0.1.0
-Requires:         python%{pyver}-keystonemiddleware >= 4.17.0
-Requires:         python%{pyver}-falcon
-Requires:         python%{pyver}-futurist
-Requires:         python%{pyver}-babel
-Requires:         python%{pyver}-sqlalchemy >= 1.0.10
-Requires:         python%{pyver}-keystoneclient
-Requires:         python%{pyver}-requests
-Requires:         python%{pyver}-iso8601
-Requires:         python%{pyver}-webob >= 1.7.1
-Requires:         python%{pyver}-pbr >= 2.0.0
-Requires:         python%{pyver}-autobahn
-Requires:         python%{pyver}-osprofiler >= 1.4.0
-Requires:         python%{pyver}-alembic
+Requires:         python3-six
+Requires:         python3-stevedore
+Requires:         python3-jsonschema
+Requires:         python3-oslo-cache >= 1.26.0
+Requires:         python3-oslo-config >= 2:5.2.0
+Requires:         python3-oslo-context >= 2.19.2
+Requires:         python3-oslo-db >= 4.27.0
+Requires:         python3-oslo-log >= 3.36.0
+Requires:         python3-oslo-messaging >= 5.29.0
+Requires:         python3-oslo-policy >= 1.30.0
+Requires:         python3-oslo-serialization >= 2.18.0
+Requires:         python3-oslo-utils >= 3.33.0
+Requires:         python3-oslo-i18n >= 3.15.3
+Requires:         python3-oslo-reports >= 1.18.0
+Requires:         python3-oslo-upgradecheck >= 0.1.0
+Requires:         python3-keystonemiddleware >= 4.17.0
+Requires:         python3-falcon
+Requires:         python3-futurist
+Requires:         python3-babel
+Requires:         python3-sqlalchemy >= 1.0.10
+Requires:         python3-keystoneclient
+Requires:         python3-requests
+Requires:         python3-iso8601
+Requires:         python3-webob >= 1.7.1
+Requires:         python3-pbr >= 2.0.0
+Requires:         python3-autobahn
+Requires:         python3-osprofiler >= 1.4.0
+Requires:         python3-alembic
 
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:         python-enum34
-Requires:         python-pymongo
-Requires:         python-memcached
-Requires:         python-bson
-Requires:         python-trollius
-Requires:         python-msgpack >= 0.5.1
-Requires:         python-redis
-%else
-Requires:         python%{pyver}-pymongo
-Requires:         python%{pyver}-memcached
-Requires:         python%{pyver}-bson
-Requires:         python%{pyver}-trollius
-Requires:         python%{pyver}-msgpack >= 0.5.1
-Requires:         python%{pyver}-redis
-%endif
+Requires:         python3-pymongo
+Requires:         python3-memcached
+Requires:         python3-bson
+Requires:         python3-msgpack >= 0.5.1
+Requires:         python3-redis
 
 %description
 %{common_desc}
 
-%package -n python%{pyver}-%{service}-tests
+%package -n python3-%{service}-tests
 Summary:        Zaqar tests
-%{?python_provide:%python_provide python%{pyver}-%{service}-tests}
+%{?python_provide:%python_provide python3-%{service}-tests}
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
-%description -n python%{pyver}-%{service}-tests
+%description -n python3-%{service}-tests
 %{common_desc}
 
 This package contains the Zaqar test files.
@@ -146,11 +115,11 @@ This package contains the Zaqar test files.
 
 %build
 # Generate config file
-PYTHONPATH=. oslo-config-generator-%{pyver} --config-file=etc/oslo-config-generator/zaqar.conf
+PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar.conf
 
-%{pyver_build}
+%{py3_build}
 # Generate i18n files
-%{pyver_bin} setup.py compile_catalog -d build/lib/%{service}/locale
+%{__python3} setup.py compile_catalog -d build/lib/%{service}/locale
 
 # Programmatically update defaults in sample configs
 
@@ -169,7 +138,7 @@ while read name eq value; do
 done < %{SOURCE1}
 
 %install
-%{pyver_install}
+%{py3_install}
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
@@ -193,9 +162,9 @@ install -p -m 644 %{SOURCE12} %{buildroot}%{_unitdir}
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
-rm -f %{buildroot}%{pyver_sitelib}/%{service}/locale/*/LC_*/%{service}*po
-rm -f %{buildroot}%{pyver_sitelib}/%{service}/locale/*pot
-mv %{buildroot}%{pyver_sitelib}/%{service}/locale %{buildroot}%{_datadir}/locale
+rm -f %{buildroot}%{python3_sitelib}/%{service}/locale/*/LC_*/%{service}*po
+rm -f %{buildroot}%{python3_sitelib}/%{service}/locale/*pot
+mv %{buildroot}%{python3_sitelib}/%{service}/locale %{buildroot}%{_datadir}/locale
 
 # Find language files
 %find_lang %{service} --all-name
@@ -246,12 +215,12 @@ exit 0
 %defattr(-,root,root,-)
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}@.service
-%{pyver_sitelib}/%{service}
-%{pyver_sitelib}/%{service}-%{version}*.egg-info
-%exclude %{pyver_sitelib}/%{service}/tests
+%{python3_sitelib}/%{service}
+%{python3_sitelib}/%{service}-%{version}*.egg-info
+%exclude %{python3_sitelib}/%{service}/tests
 
-%files -n python%{pyver}-%{service}-tests
+%files -n python3-%{service}-tests
 %license LICENSE
-%{pyver_sitelib}/%{service}/tests
+%{python3_sitelib}/%{service}/tests
 
 %changelog
