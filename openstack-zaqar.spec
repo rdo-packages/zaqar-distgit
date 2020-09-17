@@ -90,7 +90,7 @@ Requires:         python3-alembic
 Requires:         python3-pymongo
 Requires:         python3-memcached
 Requires:         python3-bson
-Requires:         python3-msgpack >= 0.5.1
+Requires:         python3-msgpack >= 1.0.0
 Requires:         python3-redis
 
 %description
@@ -100,6 +100,8 @@ Requires:         python3-redis
 Summary:        Zaqar tests
 %{?python_provide:%python_provide python3-%{service}-tests}
 Requires:       %{name} = %{epoch}:%{version}-%{release}
+Requires:python3-swiftclient >= 3.2.0
+Requires:python3-cryptography >= 2.1
 
 %description -n python3-%{service}-tests
 %{common_desc}
