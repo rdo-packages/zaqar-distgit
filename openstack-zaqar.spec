@@ -90,8 +90,10 @@ Requires:         python3-alembic
 Requires:         python3-pymongo
 Requires:         python3-memcached
 Requires:         python3-bson
-Requires:         python3-msgpack >= 0.5.1
+Requires:         python3-msgpack >= 1.0.0
 Requires:         python3-redis
+Requires:         python3-swiftclient >= 3.2.0
+Requires:         python3-cryptography >= 2.1
 
 %description
 %{common_desc}
