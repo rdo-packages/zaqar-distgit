@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2417d15b_cc6997e9",
+        "filename": "openstack-zaqar.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-09-18T12:55:48Z",
+      "side": 1,
+      "message": "better to add some space. after Requires:",
+      "revId": "47eb82b9696de0eaf15c695397532df88f7c961e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbb4c9f5_ba588e05",
+        "filename": "openstack-zaqar.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2020-09-18T12:55:48Z",
+      "side": 1,
+      "message": "also move to python3- subpackage instead of test sub package",
+      "revId": "47eb82b9696de0eaf15c695397532df88f7c961e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
