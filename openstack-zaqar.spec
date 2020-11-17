@@ -42,7 +42,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr >= 1.6
 BuildRequires:  systemd
-BuildRequires:  git
+BuildRequires:  git-core
 # Required for config file generation
 BuildRequires:  python3-oslo-cache >= 1.26.0
 BuildRequires:  python3-oslo-config >= 2:5.2.0
