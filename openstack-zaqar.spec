@@ -45,7 +45,7 @@ BuildRequires:  systemd
 BuildRequires:  git-core
 # Required for config file generation
 BuildRequires:  python3-oslo-cache >= 1.26.0
-BuildRequires:  python3-oslo-config >= 2:5.2.0
+BuildRequires:  python3-oslo-config >= 2:6.8.0
 BuildRequires:  python3-oslo-db >= 4.27.0
 BuildRequires:  python3-oslo-log >= 3.36.0
 BuildRequires:  python3-oslo-policy >= 1.30.0
@@ -53,7 +53,7 @@ BuildRequires:  python3-oslo-upgradecheck >= 0.1.0
 BuildRequires:  python3-keystonemiddleware >= 4.17.0
 BuildRequires:  python3-falcon
 BuildRequires:  python3-jsonschema
-BuildRequires:  python3-sqlalchemy >= 1.0.10
+BuildRequires:  python3-sqlalchemy >= 1.3.2
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-oslo-messaging
 BuildRequires:  python3-autobahn
@@ -70,42 +70,41 @@ Obsoletes:      openstack-marconi < 2014.1-2.2
 Requires(pre):  shadow-utils
 %{?systemd_requires}
 
-Requires:         python3-six
-Requires:         python3-stevedore
-Requires:         python3-jsonschema
+Requires:         python3-stevedore >= 1.20.0
+Requires:         python3-jsonschema >= 3.2.0
 Requires:         python3-oslo-cache >= 1.26.0
-Requires:         python3-oslo-config >= 2:5.2.0
+Requires:         python3-oslo-config >= 2:6.8.0
 Requires:         python3-oslo-context >= 2.19.2
-Requires:         python3-oslo-db >= 4.27.0
+Requires:         python3-oslo-db >= 6.0.0
 Requires:         python3-oslo-log >= 3.36.0
 Requires:         python3-oslo-messaging >= 5.29.0
-Requires:         python3-oslo-policy >= 1.30.0
+Requires:         python3-oslo-policy >= 3.6.0
 Requires:         python3-oslo-serialization >= 2.18.0
 Requires:         python3-oslo-utils >= 3.33.0
 Requires:         python3-oslo-i18n >= 3.15.3
 Requires:         python3-oslo-reports >= 1.18.0
-Requires:         python3-oslo-upgradecheck >= 0.1.0
+Requires:         python3-oslo-upgradecheck >= 1.3.0
 Requires:         python3-keystonemiddleware >= 4.17.0
-Requires:         python3-falcon
-Requires:         python3-futurist
-Requires:         python3-babel
-Requires:         python3-sqlalchemy >= 1.0.10
+Requires:         python3-falcon >= 1.1.0
+Requires:         python3-futurist >= 1.2.0
+Requires:         python3-babel >= 2.3.4
+Requires:         python3-sqlalchemy >= 1.3.2
 Requires:         python3-keystoneclient
-Requires:         python3-requests
-Requires:         python3-iso8601
+Requires:         python3-requests >= 2.25.0
+Requires:         python3-iso8601 >= 0.1.11
 Requires:         python3-webob >= 1.7.1
 Requires:         python3-pbr >= 2.0.0
-Requires:         python3-autobahn
+Requires:         python3-autobahn >= 20.7.1
 Requires:         python3-osprofiler >= 1.4.0
-Requires:         python3-alembic
+Requires:         python3-alembic >= 0.9.6
 
 Requires:         python3-pymongo
-Requires:         python3-memcached
+Requires:         python3-memcached >= 1.56
 Requires:         python3-bson
 Requires:         python3-msgpack >= 1.0.0
 Requires:         python3-redis
 Requires:         python3-swiftclient >= 3.2.0
-Requires:         python3-cryptography >= 2.1
+Requires:         python3-cryptography >= 2.7
 
 %description
 %{common_desc}
