@@ -61,7 +61,6 @@ BuildRequires:  python3-autobahn
 BuildRequires:  python3-babel
 BuildRequires:  openstack-macros
 
-BuildRequires:  python3-pymongo
 BuildRequires:  python3-trollius
 BuildRequires:  python3-redis
 
@@ -98,7 +97,6 @@ Requires:         python3-autobahn >= 20.7.1
 Requires:         python3-osprofiler >= 1.4.0
 Requires:         python3-alembic >= 0.9.6
 
-Requires:         python3-pymongo
 Requires:         python3-memcached >= 1.56
 Requires:         python3-bson
 Requires:         python3-msgpack >= 1.0.0
