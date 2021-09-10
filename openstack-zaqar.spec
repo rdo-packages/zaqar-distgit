@@ -74,7 +74,7 @@ Requires:         python3-jsonschema >= 3.2.0
 Requires:         python3-oslo-cache >= 1.26.0
 Requires:         python3-oslo-config >= 2:6.8.0
 Requires:         python3-oslo-context >= 2.19.2
-Requires:         python3-oslo-db >= 6.0.0
+Requires:         python3-oslo-db >= 8.4.0
 Requires:         python3-oslo-log >= 3.36.0
 Requires:         python3-oslo-messaging >= 5.29.0
 Requires:         python3-oslo-policy >= 3.6.0
@@ -83,8 +83,8 @@ Requires:         python3-oslo-utils >= 3.33.0
 Requires:         python3-oslo-i18n >= 3.15.3
 Requires:         python3-oslo-reports >= 1.18.0
 Requires:         python3-oslo-upgradecheck >= 1.3.0
-Requires:         python3-keystonemiddleware >= 4.17.0
-Requires:         python3-falcon >= 1.1.0
+Requires:         python3-keystonemiddleware >= 9.1.0
+Requires:         python3-falcon >= 2.0.0
 Requires:         python3-futurist >= 1.2.0
 Requires:         python3-babel >= 2.3.4
 Requires:         python3-sqlalchemy >= 1.3.2
@@ -101,7 +101,7 @@ Requires:         python3-memcached >= 1.56
 Requires:         python3-bson
 Requires:         python3-msgpack >= 1.0.0
 Requires:         python3-redis
-Requires:         python3-swiftclient >= 3.2.0
+Requires:         python3-swiftclient >= 3.10.1
 Requires:         python3-cryptography >= 2.7
 
 %description
