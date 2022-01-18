@@ -2,7 +2,7 @@
 global:Registered-Users	Registered Users
 4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
 f846ffaa77d0729565d2e06799e6dc434c335c38	openstack/zaqar-ptl
-6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Non-Interactive Users
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Service Users
 cbe1718234e6911b1198217cf8352eba42e17802	openstack/zaqar-core
 global:Anonymous-Users	Anonymous Users
 401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
