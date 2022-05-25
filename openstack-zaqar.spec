@@ -134,7 +134,7 @@ PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar
 
 %{py3_build}
 # Generate i18n files
-%{__python3} setup.py compile_catalog -d build/lib/%{service}/locale
+%{__python3} setup.py compile_catalog -d build/lib/%{service}/locale --domain zaqar
 
 # Programmatically update defaults in sample configs
 
