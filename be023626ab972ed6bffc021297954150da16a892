@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515e55eb_26faf66a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 671
+      },
+      "writtenOn": "2022-05-27T05:58:23Z",
+      "side": 1,
+      "message": "Duplicate of https://review.rdoproject.org/r/c/openstack/zaqar-distgit/+/43131",
+      "revId": "be023626ab972ed6bffc021297954150da16a892",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
