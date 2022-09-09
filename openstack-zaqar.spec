@@ -69,7 +69,7 @@ Obsoletes:      openstack-marconi < 2014.1-2.2
 Requires(pre):  shadow-utils
 %{?systemd_requires}
 
-Requires:         python3-stevedore >= 1.20.0
+Requires:         python3-stevedore >= 3.2.2
 Requires:         python3-jsonschema >= 3.2.0
 Requires:         python3-oslo-cache >= 1.26.0
 Requires:         python3-oslo-config >= 2:6.8.0
@@ -84,16 +84,16 @@ Requires:         python3-oslo-i18n >= 3.15.3
 Requires:         python3-oslo-reports >= 1.18.0
 Requires:         python3-oslo-upgradecheck >= 1.3.0
 Requires:         python3-keystonemiddleware >= 9.1.0
-Requires:         python3-falcon >= 2.0.0
+Requires:         python3-falcon >= 3.0.0
 Requires:         python3-futurist >= 1.2.0
 Requires:         python3-babel >= 2.3.4
-Requires:         python3-sqlalchemy >= 1.3.2
+Requires:         python3-sqlalchemy >= 1.3.19
 Requires:         python3-keystoneclient
 Requires:         python3-requests >= 2.25.0
 Requires:         python3-iso8601 >= 0.1.11
 Requires:         python3-webob >= 1.7.1
 Requires:         python3-pbr >= 2.0.0
-Requires:         python3-autobahn >= 20.7.1
+Requires:         python3-autobahn >= 21.2.2
 Requires:         python3-osprofiler >= 1.4.0
 Requires:         python3-alembic >= 0.9.6
 
