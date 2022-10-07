@@ -56,6 +56,7 @@ BuildRequires:  python3-keystonemiddleware >= 4.17.0
 BuildRequires:  python3-falcon
 BuildRequires:  python3-jsonschema
 BuildRequires:  python3-sqlalchemy >= 1.3.2
+BuildRequires:  python3-sqlalchemy < 1.4.0
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-oslo-messaging
 BuildRequires:  python3-autobahn
@@ -91,6 +92,7 @@ Requires:         python3-falcon >= 1.1.0
 Requires:         python3-futurist >= 1.2.0
 Requires:         python3-babel >= 2.3.4
 Requires:         python3-sqlalchemy >= 1.3.2
+Requires:         python3-sqlalchemy < 1.4.0
 Requires:         python3-keystoneclient
 Requires:         python3-requests >= 2.25.0
 Requires:         python3-iso8601 >= 0.1.11
