@@ -16,6 +16,24 @@
       "message": "We currently provides python3-autobahn \u003d 21.2.2-2.el9s\nu-c is 22.7.1 [1]\nIn Fedora Koji [2], we have 22.12.1 or 23.1.2\n\n[1] https://github.com/openstack/requirements/blob/6a6ededcd24aafa84e17db7c24b291037dd7056c/upper-constraints.txt#L267\n[2] https://koji.fedoraproject.org/koji/packageinfo?packageID\u003d20815",
       "revId": "f716b8254b3d015ea92f135eac03d3ba2267e9fd",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b68f63_38be7eb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-03-06T13:07:15Z",
+      "side": 1,
+      "message": "actually, checking in commit msg i\u0027d say this bump was just related to support 3.8, i think we are pretty safe with our current version.",
+      "parentUuid": "eea62d77_3954b5aa",
+      "revId": "f716b8254b3d015ea92f135eac03d3ba2267e9fd",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
