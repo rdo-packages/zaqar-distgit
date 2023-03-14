@@ -221,6 +221,7 @@ exit 0
 %{_bindir}/%{service}-bench
 %{_bindir}/%{service}-gc
 %{_bindir}/%{service}-sql-db-manage
+%{_bindir}/%{service}-wsgi
 
 %{_datarootdir}/%{service}
 
