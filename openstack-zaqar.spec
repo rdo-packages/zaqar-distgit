@@ -240,3 +240,4 @@ exit 0
 %{python3_sitelib}/%{service}/tests
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/zaqar/commit/d27fb63796e78fbbd988fc8a25b44dc8caf907a3
