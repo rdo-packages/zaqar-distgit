@@ -16,6 +16,24 @@
       "message": "Maybe we should revert our commit [1] as well\n\n[1] https://review.rdoproject.org/r/c/openstack/zaqar-distgit/+/47730",
       "revId": "702e30583f64228d32fadca8d98ca2b33a8b5acf",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8edc3462_f5ce4b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 757
+      },
+      "writtenOn": "2023-03-31T10:40:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure if reverting changes in spec file is proper - will it trigger package rebuild?",
+      "parentUuid": "3ff8cee0_c41ae081",
+      "revId": "702e30583f64228d32fadca8d98ca2b33a8b5acf",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
