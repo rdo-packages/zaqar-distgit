@@ -34,6 +34,24 @@
       "parentUuid": "3ff8cee0_c41ae081",
       "revId": "702e30583f64228d32fadca8d98ca2b33a8b5acf",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d82bebc_68c8ee59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-03-31T11:35:40Z",
+      "side": 1,
+      "message": "It will trigger a new build in DLRN as it\u0027s a new commit in the git tree.\nIMO, reverting is better for the record",
+      "parentUuid": "8edc3462_f5ce4b9b",
+      "revId": "702e30583f64228d32fadca8d98ca2b33a8b5acf",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
