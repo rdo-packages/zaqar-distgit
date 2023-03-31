@@ -215,13 +215,11 @@ exit 0
 
 %dir %attr(0750, %{service}, root) %{_localstatedir}/log/%{service}
 
-#%{_bindir}/marconi-server
 %{_bindir}/%{service}-server
 %{_bindir}/%{service}-status
 %{_bindir}/%{service}-bench
 %{_bindir}/%{service}-gc
 %{_bindir}/%{service}-sql-db-manage
-%{_bindir}/%{service}-wsgi
 
 %{_datarootdir}/%{service}
 
