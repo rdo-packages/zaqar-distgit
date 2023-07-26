@@ -2,6 +2,8 @@
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global service zaqar
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate sphinx openstackdocstheme
 %global common_desc \
 Zaqar is a new OpenStack project to create a multi-tenant cloud queuing \
 service.The project will define a clean, RESTful API, use a modular \
@@ -17,7 +19,7 @@ Version:        XXX
 Release:        XXX
 Summary:        Message queuing service for OpenStack
 
-License:        ASL 2.0
+License:        Apache-2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        https://tarballs.openstack.org/zaqar/%{service}-%{upstream_version}.tar.gz
 Source1:        %{service}-dist.conf
@@ -39,77 +41,20 @@ BuildRequires:  /usr/bin/gpgv2
 %endif
 BuildRequires:  openstack-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr >= 1.6
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  systemd
 BuildRequires:  git-core
-# Required for config file generation
-BuildRequires:  python3-oslo-cache >= 1.26.0
-BuildRequires:  python3-oslo-config >= 2:6.8.0
-BuildRequires:  python3-oslo-db >= 4.27.0
-BuildRequires:  python3-oslo-log >= 3.36.0
-BuildRequires:  python3-oslo-policy >= 1.30.0
-BuildRequires:  python3-oslo-upgradecheck >= 0.1.0
-BuildRequires:  python3-keystonemiddleware >= 4.17.0
-BuildRequires:  python3-falcon
-BuildRequires:  python3-jsonschema
-BuildRequires:  python3-sqlalchemy >= 1.3.2
-BuildRequires:  python3-osprofiler
-BuildRequires:  python3-oslo-messaging
-BuildRequires:  python3-autobahn
-# Required to compile translation files
-BuildRequires:  python3-babel
-BuildRequires:  openstack-macros
 
-BuildRequires:  python3-trollius
-BuildRequires:  python3-redis
-
-Obsoletes:      openstack-marconi < 2014.1-2.2
+Requires:       python3-redis
 
 Requires(pre):  shadow-utils
 %{?systemd_requires}
-
-Requires:         python3-stevedore >= 3.2.2
-Requires:         python3-jsonschema >= 3.2.0
-Requires:         python3-oslo-cache >= 1.26.0
-Requires:         python3-oslo-config >= 2:8.3.2
-Requires:         python3-oslo-context >= 2.19.2
-Requires:         python3-oslo-db >= 11.0.0
-Requires:         python3-oslo-log >= 4.6.1
-Requires:         python3-oslo-messaging >= 12.5.0
-Requires:         python3-oslo-policy >= 3.8.1
-Requires:         python3-oslo-serialization >= 4.2.0
-Requires:         python3-oslo-utils >= 4.12.1
-Requires:         python3-oslo-i18n >= 3.15.3
-Requires:         python3-oslo-reports >= 2.2.0
-Requires:         python3-oslo-upgradecheck >= 1.3.0
-Requires:         python3-keystonemiddleware >= 9.1.0
-Requires:         python3-falcon >= 3.0.0
-Requires:         python3-futurist >= 1.2.0
-Requires:         python3-babel >= 2.3.4
-Requires:         python3-sqlalchemy >= 1.3.19
-Requires:         python3-keystoneclient
-Requires:         python3-requests >= 2.25.0
-Requires:         python3-iso8601 >= 0.1.11
-Requires:         python3-webob >= 1.7.1
-Requires:         python3-pbr >= 2.0.0
-Requires:         python3-autobahn >= 21.2.2
-Requires:         python3-osprofiler >= 1.4.0
-Requires:         python3-alembic >= 0.9.6
-
-Requires:         python3-memcached >= 1.56
-Requires:         python3-bson
-Requires:         python3-msgpack >= 1.0.0
-Requires:         python3-redis
-Requires:         python3-swiftclient >= 3.10.1
-Requires:         python3-cryptography >= 2.7
 
 %description
 %{common_desc}
 
 %package -n python3-%{service}-tests
 Summary:        Zaqar tests
-%{?python_provide:%python_provide python3-%{service}-tests}
 Requires:       %{name} = %{epoch}:%{version}-%{release}
 
 %description -n python3-%{service}-tests
@@ -124,17 +69,29 @@ This package contains the Zaqar test files.
 %endif
 %autosetup -n %{service}-%{upstream_version} -S git
 
-# Remove the requirements file so that pbr hooks don't add it
-# to distutils requires_dist config
-%py_req_cleanup
+
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+%generate_buildrequires
+%pyproject_buildrequires -t -e %{default_toxenv}
 
 %build
 # Generate config file
 PYTHONPATH=. oslo-config-generator --config-file=etc/oslo-config-generator/zaqar.conf
 
-%{py3_build}
-# Generate i18n files
-%{__python3} setup.py compile_catalog -d build/lib/%{service}/locale --domain zaqar
+%pyproject_wheel
 
 # Programmatically update defaults in sample configs
 
@@ -153,7 +110,11 @@ while read name eq value; do
 done < %{SOURCE1}
 
 %install
-%{py3_install}
+%pyproject_install
+
+# Generate i18n files
+%{__python3} setup.py compile_catalog -d %{buildroot}%{python3_sitelib}/%{service}/locale --domain zaqar
+
 
 # Setup directories
 install -d -m 755 %{buildroot}%{_unitdir}
@@ -230,7 +191,7 @@ exit 0
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}@.service
 %{python3_sitelib}/%{service}
-%{python3_sitelib}/%{service}-%{version}*.egg-info
+%{python3_sitelib}/%{service}-%{version}*.dist-info
 %exclude %{python3_sitelib}/%{service}/tests
 
 %files -n python3-%{service}-tests
