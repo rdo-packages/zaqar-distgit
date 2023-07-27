@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3409c2_8aa551b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-07-27T07:26:02Z",
+      "side": 1,
+      "message": "bson is removed as run-time dep but it\u0027s used only for mongodb driver which we don\u0027t \"support\"",
+      "revId": "c09016e3c33caa684d162fbe280e66c450ecd7a6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
