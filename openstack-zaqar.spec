@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0xf8675126e2411e7748dd46662fc2093e4682645f
 %global service zaqar
@@ -17,14 +16,12 @@ Name:           openstack-%{service}
 # https://review.openstack.org/#/q/I6a35fa0dda798fad93b804d00a46af80f08d475c,n,z
 Epoch:          1
 Version:        19.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Message queuing service for OpenStack
 
 License:        Apache-2.0
 URL:            https://wiki.openstack.org/wiki/Zaqar
 Source0:        https://tarballs.openstack.org/zaqar/%{service}-%{upstream_version}.tar.gz
-#
-# patches_base=19.0.0.0rc1
 #
 
 Source1:        %{service}-dist.conf
@@ -205,6 +202,9 @@ exit 0
 %{python3_sitelib}/%{service}/tests
 
 %changelog
+* Wed Oct 02 2024 RDO <dev@lists.rdoproject.org> 1:19.0.0-1
+- Update to 19.0.0
+
 * Mon Sep 23 2024 RDO <dev@lists.rdoproject.org> 1:19.0.0-0.1.0rc1
 - Update to 19.0.0.0rc1
 
